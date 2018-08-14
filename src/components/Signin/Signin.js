@@ -9,6 +9,7 @@ class Signin extends React.Component {
     }
   }
 
+
   onEmailChange = (event) => {
     this.setState({signInEmail: event.target.value})
   }
@@ -18,7 +19,7 @@ class Signin extends React.Component {
   }
 
   onSubmitSignIn = () => {
-    fetch('http://localhost:3000/signin', {
+    fetch('https://rocky-meadow-99308.herokuapp.com/signin', {
       method: 'post',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({
@@ -29,7 +30,7 @@ class Signin extends React.Component {
       .then(response => response.json())
       .then(user => {
         if (user.id) {
-          this.props.loadUser(user)
+          this.props.loadUser(user);
           this.props.onRouteChange('home');
         }
       })
@@ -73,7 +74,7 @@ class Signin extends React.Component {
               />
             </div>
             <div className="lh-copy mt3">
-              <p  onClick={() => onRouteChange('register')} className="f6 link dim black db pointer">Register</p>
+              <p onClick={() => onRouteChange('register')} className="f6 link dim black db pointer">Register</p>
             </div>
           </div>
         </main>
@@ -83,3 +84,11 @@ class Signin extends React.Component {
 }
 
 export default Signin;
+
+/*
+componentDidMount() {
+  fetch('http://localhost:3000/')
+  .then(response => response.json())
+  .then(console.log);
+}
+*/
